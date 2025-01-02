@@ -15,14 +15,14 @@
 
 ---
 
-# M5StickCPlus2SensorEnvIII
+# StickC Plus2 with Unit Sensor Env III (M5Stack)
 
 ![Alt text](result.jpg?raw=true "M5StickCPlus2")
 
 Example of how you can pull temperature, humidity and pressure data from the ENV III sensor paired with the M5StickCPlus2.
 
 ## Hardware used:
-- [M5 Cardputer](https://docs.m5stack.com/en/core/M5StickC%20PLUS2)
+- [StickC Plus2](https://docs.m5stack.com/en/core/M5StickC%20PLUS2)
 - [Unit ENV-III](https://docs.m5stack.com/en/unit/envIII)
 
 ## License
