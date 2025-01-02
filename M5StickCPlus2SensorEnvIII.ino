@@ -99,7 +99,7 @@ void setup() {
 void DisplayScreen() {
   StickCP2.Display.setTextColor(GREENYELLOW);
   StickCP2.Display.setCursor(10, 10);
-  StickCP2.Display.println("M5StickCPlus2 with Sensor ENV III");
+  StickCP2.Display.println("M5StickCPlus2 with UnitEnvIII sensor");
 
   StickCP2.Display.setTextColor(GOLD);
   StickCP2.Display.setCursor(10, 120);
