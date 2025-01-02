@@ -15,7 +15,7 @@
 
 ---
 
-# M5Stack StickC Plus2 with Unit Sensor Env III
+# M5Stack StickC Plus2 with Unit Env III Sensor
 
 ![Alt text](result.jpg?raw=true "M5StickCPlus2")
 
