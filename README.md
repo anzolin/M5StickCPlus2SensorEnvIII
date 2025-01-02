@@ -19,7 +19,7 @@
 
 ![Alt text](result.jpg?raw=true "M5StickCPlus2")
 
-Example of how you can pull temperature, humidity and pressure data from the Unit ENV III sensor paired with the M5StickCPlus2.
+Example of an IoT project of how you can extract temperature, humidity and pressure data from the M5Stack Unit ENV III sensor paired with the M5Stack StickC Plus2.
 
 
 ## Hardware used
