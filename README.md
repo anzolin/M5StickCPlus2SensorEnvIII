@@ -68,5 +68,5 @@ Thank you!
 [issues-shield]: https://img.shields.io/github/issues/anzolin/M5StickCPlus2SensorEnvIII.svg?style=for-the-badge
 [issues-url]: https://github.com/anzolin/M5StickCPlus2SensorEnvIII/issues
 [license-shield]: https://img.shields.io/github/license/anzolin/M5StickCPlus2SensorEnvIII.svg?style=for-the-badge
-[license-url]: https://github.com/anzolin/M5StickCPlus2SensorEnvIII/blob/master/LICENSE.txt
+[license-url]: https://github.com/anzolin/M5StickCPlus2SensorEnvIII/blob/master/LICENSE
 
