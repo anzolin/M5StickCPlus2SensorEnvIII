@@ -42,7 +42,7 @@ This project is [MIT Licensed](https://github.com/anzolin/M5StickCPlus2SensorEnv
   
 ## About the author
 
-Hello everyone, my name is Diego Anzolin Ferreira. I'm a .NET developer from Brazil. I hope you will enjoy this project as much as I enjoy developing it. If you have any problems, you can post a [GitHub issue](https://github.com/anzolin/M5StickCPlus2SensorEnvIII/issues). You can reach me out at diego@anzolin.com.br.
+Hello everyone, my name is Diego Anzolin Ferreira. I'm a developer from Brazil. I hope you will enjoy this project as much as I enjoy developing it. If you have any problems, you can post a [GitHub issue](https://github.com/anzolin/M5StickCPlus2SensorEnvIII/issues). You can reach me out at diego@anzolin.com.br.
 
 
 ## Donate
