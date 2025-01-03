@@ -48,17 +48,21 @@ void GetMeasurements() {
 
   Serial.printf("Temp: %2.1f °C \r\nHumidity: %2.0f%%  \r\nPressure: %2.0f hPa \r\nAltitude: %2.0f m\r\n\n", temp, hum, pressure / 100, altitude);
 
-  StickCP2.Display.setCursor(10, 30);
-  StickCP2.Display.printf("Temperature: %2.1f°C \n", temp);
+  StickCP2.Display.setTextSize(2);
 
-  StickCP2.Display.setCursor(10, 40);
-  StickCP2.Display.printf("Humidity: %2.0f%% \n", hum);
+  StickCP2.Display.setCursor(10, 30);
+  StickCP2.Display.printf("Temperature: %2.1fC \n", temp);
 
   StickCP2.Display.setCursor(10, 50);
-  StickCP2.Display.printf("Pressure: %2.0f hPa \n", pressure / 100);
+  StickCP2.Display.printf("Humidity: %2.0f%% \n", hum);
 
-  StickCP2.Display.setCursor(10, 60);
-  StickCP2.Display.printf("Altitude: %2.0f m \n", altitude);
+  StickCP2.Display.setCursor(10, 70);
+  StickCP2.Display.printf("Pressure: %2.0fhPa \n", pressure / 100);
+
+  StickCP2.Display.setCursor(10, 90);
+  StickCP2.Display.printf("Altitude: %2.0fm \n", altitude);
+
+  StickCP2.Display.setTextSize(1);
 
   // Gather some internal data as well, about battery states, voltages, charge rates and so on
   int bat_volt = StickCP2.Power.getBatteryVoltage();
@@ -68,11 +72,11 @@ void GetMeasurements() {
   Serial.printf("Battery Current: %dmv \n", bat_current);
 
   int bat_level = StickCP2.Power.getBatteryLevel();
-  Serial.printf("Battery Level: %d% \n\n", bat_level);
+  Serial.printf("Battery Level: %d%% \n\n", bat_level);
 
   StickCP2.Display.setTextColor(DARKGREY);
-  StickCP2.Display.setCursor(210, 120);
-  StickCP2.Display.print(StickCP2.Power.getBatteryLevel());
+  StickCP2.Display.setCursor(175, 120);
+  StickCP2.Display.printf("Bat.: %d%%", StickCP2.Power.getBatteryLevel());
 
   StickCP2.Power.setLed(0);
 }
