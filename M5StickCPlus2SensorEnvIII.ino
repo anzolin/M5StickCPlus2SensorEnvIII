@@ -17,6 +17,7 @@ QMP6988 qmp6988;  // pressure sensor
 float temp = 0.0;
 float hum = 0.0;
 float pressure = 0.0;
+float altitude = 0.0;
 
 void GetMeasurements() {
   StickCP2.Power.setLed(255);
@@ -25,6 +26,7 @@ void GetMeasurements() {
   // Get new updated values from our sensor
   if (qmp6988.update()) {
     pressure = qmp6988.calcPressure();
+    altitude = qmp6988.altitude;
   }
 
   if (sht30.update()) {    // Obtain the data of sht30.
@@ -44,7 +46,7 @@ void GetMeasurements() {
     ESP.restart();
   }
 
-  Serial.printf("Temp: %2.1f °C \r\nHumidity: %2.0f%%  \r\nPressure: %2.0f hPa\r\n\n", temp, hum, pressure / 100);
+  Serial.printf("Temp: %2.1f °C \r\nHumidity: %2.0f%%  \r\nPressure: %2.0f hPa\r\n \r\nAltitude: %2.0f\r\n\n", temp, hum, pressure / 100, altitude);
 
   StickCP2.Display.setCursor(10, 30);
   StickCP2.Display.printf("Temperature: %2.1f°C \n", temp);
@@ -54,6 +56,9 @@ void GetMeasurements() {
 
   StickCP2.Display.setCursor(10, 50);
   StickCP2.Display.printf("Pressure: %2.0f hPa \n", pressure / 100);
+
+  StickCP2.Display.setCursor(10, 60);
+  StickCP2.Display.printf("Altitude: %2.0f m \n", altitude);
 
   // Gather some internal data as well, about battery states, voltages, charge rates and so on
   int bat_volt = StickCP2.Power.getBatteryVoltage();
@@ -72,6 +77,7 @@ void setup() {
   // Initialize the M5StickCPlus2
   auto cfg = M5.config();
   StickCP2.begin(cfg);
+  StickCP2.Display.setBrightness(25);
 
   // Setup the serial port for debugging
   Serial.begin(115200);
@@ -92,6 +98,7 @@ void setup() {
 
   StickCP2.Display.fillScreen(BLACK);
   StickCP2.Display.setRotation(3);
+  StickCP2.Display.setTextSize(1);
 
   Serial.println("Initialized.");
 }
@@ -99,11 +106,15 @@ void setup() {
 void DisplayScreen() {
   StickCP2.Display.setTextColor(GREENYELLOW);
   StickCP2.Display.setCursor(10, 10);
-  StickCP2.Display.println("M5StickCPlus2 with UnitEnvIII sensor");
+  StickCP2.Display.println("M5StickCPlus2 with Env III sensor");
 
   StickCP2.Display.setTextColor(GOLD);
   StickCP2.Display.setCursor(10, 120);
   StickCP2.Display.println("Press 'A' to measure.");
+
+  StickCP2.Display.setTextColor(DARKGREY);
+  StickCP2.Display.setCursor(210, 120);
+  StickCP2.Display.print(StickCP2.Power.getBatteryLevel());
 }
 
 void loop() {
