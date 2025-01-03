@@ -2,7 +2,7 @@
  * @file M5StickCPlus2SensorEnvIII.ino
  * @author Diego Anzolin (diego@anzolin.com.br)
  * @brief Example of how you can pull temperature, humidity and pressure data from the ENV III sensor paired with the M5StickCPlus2.
- * @version 0.1
+ * @version 0.2
  * @date 2025-01-02
  * @Hardwares: M5StickCPlus2, Unit ENV-III (https://docs.m5stack.com/en/unit/envIII)
  */
