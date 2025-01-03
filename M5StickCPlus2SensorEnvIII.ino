@@ -46,7 +46,7 @@ void GetMeasurements() {
     ESP.restart();
   }
 
-  Serial.printf("Temp: %2.1f °C \r\nHumidity: %2.0f%%  \r\nPressure: %2.0f hPa\r\n \r\nAltitude: %2.0f\r\n\n", temp, hum, pressure / 100, altitude);
+  Serial.printf("Temp: %2.1f °C \r\nHumidity: %2.0f%%  \r\nPressure: %2.0f hPa \r\nAltitude: %2.0f m\r\n\n", temp, hum, pressure / 100, altitude);
 
   StickCP2.Display.setCursor(10, 30);
   StickCP2.Display.printf("Temperature: %2.1f°C \n", temp);
@@ -69,6 +69,10 @@ void GetMeasurements() {
 
   int bat_level = StickCP2.Power.getBatteryLevel();
   Serial.printf("Battery Level: %d% \n\n", bat_level);
+
+  StickCP2.Display.setTextColor(DARKGREY);
+  StickCP2.Display.setCursor(210, 120);
+  StickCP2.Display.print(StickCP2.Power.getBatteryLevel());
 
   StickCP2.Power.setLed(0);
 }
@@ -111,10 +115,6 @@ void DisplayScreen() {
   StickCP2.Display.setTextColor(GOLD);
   StickCP2.Display.setCursor(10, 120);
   StickCP2.Display.println("Press 'A' to measure.");
-
-  StickCP2.Display.setTextColor(DARKGREY);
-  StickCP2.Display.setCursor(210, 120);
-  StickCP2.Display.print(StickCP2.Power.getBatteryLevel());
 }
 
 void loop() {
