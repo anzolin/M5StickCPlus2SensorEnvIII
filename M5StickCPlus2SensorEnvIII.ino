@@ -84,6 +84,7 @@ void GetMeasurements() {
 void setup() {
   // Initialize the M5StickCPlus2
   auto cfg = M5.config();
+
   StickCP2.begin(cfg);
   StickCP2.Display.setBrightness(25);
 
@@ -109,22 +110,26 @@ void setup() {
   StickCP2.Display.setTextSize(1);
 
   Serial.println("Initialized.");
+
+  DisplayScreen();
 }
 
 void DisplayScreen() {
-  StickCP2.Display.setTextColor(GREENYELLOW);
+  StickCP2.Display.fillRect(0, 0, 240, 25, GREENYELLOW);
+
+  StickCP2.Display.setTextColor(BLACK);
   StickCP2.Display.setCursor(10, 10);
   StickCP2.Display.println("M5StickCPlus2 with Env III sensor");
 
-  StickCP2.Display.setTextColor(GOLD);
+  StickCP2.Display.drawFastHLine(0, 113, 240, DARKGREY);
+
+  StickCP2.Display.setTextColor(LIGHTGREY);
   StickCP2.Display.setCursor(10, 120);
   StickCP2.Display.println("Press 'A' to measure.");
 }
 
 void loop() {
   StickCP2.update();
-
-  DisplayScreen();
 
   if (StickCP2.BtnA.wasReleased()) {
     Serial.println("Button A was released.");
