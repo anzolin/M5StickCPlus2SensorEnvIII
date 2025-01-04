@@ -75,8 +75,8 @@ void GetMeasurements() {
   Serial.printf("Battery Level: %d%% \n\n", bat_level);
 
   StickCP2.Display.setTextColor(DARKGREY);
-  StickCP2.Display.setCursor(175, 120);
-  StickCP2.Display.printf("Bat.: %d%%", StickCP2.Power.getBatteryLevel());
+  StickCP2.Display.setCursor(210, 120);
+  StickCP2.Display.printf("%d%%", StickCP2.Power.getBatteryLevel());
 
   StickCP2.Power.setLed(0);
 }
@@ -125,7 +125,7 @@ void DisplayScreen() {
 
   StickCP2.Display.setTextColor(LIGHTGREY);
   StickCP2.Display.setCursor(10, 120);
-  StickCP2.Display.println("Press 'A' to measure.");
+  StickCP2.Display.println("Press button to measure.");
 }
 
 void loop() {
