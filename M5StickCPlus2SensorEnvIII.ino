@@ -19,6 +19,8 @@ float hum = 0.0;
 float pressure = 0.0;
 float altitude = 0.0;
 
+int brightness = 25;
+
 void GetMeasurements() {
   StickCP2.Power.setLed(255);
   StickCP2.Display.setTextColor(WHITE);
@@ -51,7 +53,7 @@ void GetMeasurements() {
   StickCP2.Display.setTextSize(2);
 
   StickCP2.Display.setCursor(10, 30);
-  StickCP2.Display.printf("Temperature: %2.1fC \n", temp);
+  StickCP2.Display.printf("Temperature: %2.1f*C \n", temp);
 
   StickCP2.Display.setCursor(10, 50);
   StickCP2.Display.printf("Humidity: %2.0f%% \n", hum);
@@ -74,11 +76,34 @@ void GetMeasurements() {
   int bat_level = StickCP2.Power.getBatteryLevel();
   Serial.printf("Battery Level: %d%% \n\n", bat_level);
 
-  StickCP2.Display.setTextColor(DARKGREY);
+  int batteryLevelColor = bat_level < 30 ? RED : DARKGREY;
+  StickCP2.Display.setTextColor(batteryLevelColor);
   StickCP2.Display.setCursor(210, 120);
-  StickCP2.Display.printf("%d%%", StickCP2.Power.getBatteryLevel());
+  StickCP2.Display.printf("%d%%", bat_level);
 
   StickCP2.Power.setLed(0);
+}
+
+void SetBrightness() {
+  switch (brightness) {
+    case 1:
+      brightness = 25;
+      break;
+    case 25:
+      brightness = 50;
+      break;
+    case 50:
+      brightness = 75;
+      break;
+    case 75:
+      brightness = 100;
+      break;
+    case 100:
+      brightness = 1;
+      break;
+  }
+
+  StickCP2.Display.setBrightness(brightness);
 }
 
 void setup() {
@@ -125,7 +150,7 @@ void DisplayScreen() {
 
   StickCP2.Display.setTextColor(LIGHTGREY);
   StickCP2.Display.setCursor(10, 120);
-  StickCP2.Display.println("Press button to measure.");
+  StickCP2.Display.println("< Press button to measure >");
 }
 
 void loop() {
@@ -136,7 +161,15 @@ void loop() {
 
     StickCP2.Speaker.tone(8000, 400);
     StickCP2.Display.fillScreen(BLACK);
+
     DisplayScreen();
     GetMeasurements();
+  }
+
+  if (StickCP2.BtnB.wasReleased()) {
+    Serial.println("Button B was released.");
+
+    StickCP2.Speaker.tone(8000, 400);
+    SetBrightness();
   }
 }
