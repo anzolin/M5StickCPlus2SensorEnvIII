@@ -104,6 +104,12 @@ void SetBrightness() {
   }
 
   StickCP2.Display.setBrightness(brightness);
+
+  StickCP2.Display.setTextColor(DARKGREY, BLACK);
+  StickCP2.Display.setCursor(170, 120);
+  StickCP2.Display.println("   ");
+  StickCP2.Display.setCursor(170, 120);
+  StickCP2.Display.printf("%d% ", brightness);
 }
 
 void setup() {
@@ -146,11 +152,19 @@ void DisplayScreen() {
   StickCP2.Display.setCursor(10, 10);
   StickCP2.Display.println("M5StickCPlus2 with Env III sensor");
 
+  StickCP2.Display.drawFastVLine(160, 113, 22, DARKGREY);
+  StickCP2.Display.drawFastVLine(200, 113, 22, DARKGREY);
   StickCP2.Display.drawFastHLine(0, 113, 240, DARKGREY);
 
   StickCP2.Display.setTextColor(LIGHTGREY);
   StickCP2.Display.setCursor(10, 120);
-  StickCP2.Display.println("< Press button to measure >");
+  StickCP2.Display.println("(a) Measure (b) Light");
+
+  StickCP2.Display.setTextColor(DARKGREY, BLACK);
+  StickCP2.Display.setCursor(170, 120);
+  StickCP2.Display.println("   ");
+  StickCP2.Display.setCursor(170, 120);
+  StickCP2.Display.printf("%d% ", brightness);
 }
 
 void loop() {
