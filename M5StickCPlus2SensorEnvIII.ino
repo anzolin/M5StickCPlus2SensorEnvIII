@@ -76,12 +76,28 @@ void GetMeasurements() {
   int bat_level = StickCP2.Power.getBatteryLevel();
   Serial.printf("Battery Level: %d%% \n\n", bat_level);
 
-  int batteryLevelColor = bat_level < 30 ? RED : DARKGREY;
+  StickCP2.Power.setLed(0);
+}
+
+void UpdateBatteryStatus() {
+  StickCP2.Display.setCursor(210, 120);
+  StickCP2.Display.setTextColor(DARKGREY, BLACK);
+  StickCP2.Display.println("    ");
+
+  int batteryLevel = StickCP2.Power.getBatteryLevel();
+  int batteryLevelColor = batteryLevel < 30 ? RED : DARKGREY;
+
   StickCP2.Display.setTextColor(batteryLevelColor);
   StickCP2.Display.setCursor(210, 120);
-  StickCP2.Display.printf("%d%%", bat_level);
+  StickCP2.Display.printf("%d%%", batteryLevel);
+}
 
-  StickCP2.Power.setLed(0);
+void UpdateBrightnessStatus() {
+  StickCP2.Display.setTextColor(DARKGREY, BLACK);
+  StickCP2.Display.setCursor(170, 120);
+  StickCP2.Display.println("   ");
+  StickCP2.Display.setCursor(170, 120);
+  StickCP2.Display.printf("%d% ", brightness);
 }
 
 void SetBrightness() {
@@ -105,11 +121,10 @@ void SetBrightness() {
 
   StickCP2.Display.setBrightness(brightness);
 
-  StickCP2.Display.setTextColor(DARKGREY, BLACK);
-  StickCP2.Display.setCursor(170, 120);
-  StickCP2.Display.println("   ");
-  StickCP2.Display.setCursor(170, 120);
-  StickCP2.Display.printf("%d% ", brightness);
+  Serial.printf("Brightness: %d%% \n\n", brightness);
+
+  UpdateBrightnessStatus();
+  UpdateBatteryStatus();
 }
 
 void setup() {
@@ -160,11 +175,8 @@ void DisplayScreen() {
   StickCP2.Display.setCursor(10, 120);
   StickCP2.Display.println("(a) Measure (b) Light");
 
-  StickCP2.Display.setTextColor(DARKGREY, BLACK);
-  StickCP2.Display.setCursor(170, 120);
-  StickCP2.Display.println("   ");
-  StickCP2.Display.setCursor(170, 120);
-  StickCP2.Display.printf("%d% ", brightness);
+  UpdateBrightnessStatus();
+  UpdateBatteryStatus();
 }
 
 void loop() {
@@ -183,7 +195,7 @@ void loop() {
   if (StickCP2.BtnB.wasReleased()) {
     Serial.println("Button B was released.");
 
-    StickCP2.Speaker.tone(8000, 400);
+    StickCP2.Speaker.tone(6000, 400);
     SetBrightness();
   }
 }
