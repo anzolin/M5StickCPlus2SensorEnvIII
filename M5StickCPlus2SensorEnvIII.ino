@@ -85,7 +85,13 @@ void UpdateBatteryStatus() {
   StickCP2.Display.println("    ");
 
   int batteryLevel = StickCP2.Power.getBatteryLevel();
-  int batteryLevelColor = batteryLevel < 30 ? RED : DARKGREY;
+  int batteryLevelColor = DARKGREY;
+
+  if (batteryLevel <= 10) {
+    batteryLevelColor = RED;
+  } else if (batteryLevel <= 30) {
+    batteryLevelColor = YELLOW;
+  }
 
   StickCP2.Display.setTextColor(batteryLevelColor);
   StickCP2.Display.setCursor(210, 120);
