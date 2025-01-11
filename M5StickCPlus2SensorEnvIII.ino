@@ -167,7 +167,7 @@ void setup() {
 }
 
 void DisplayScreen() {
-  StickCP2.Display.fillRect(0, 0, 240, 25, GREENYELLOW);
+  StickCP2.Display.fillRect(0, 0, 240, 25, YELLOW);
 
   StickCP2.Display.setTextColor(BLACK);
   StickCP2.Display.setCursor(10, 10);
